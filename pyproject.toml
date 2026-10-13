@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cube-f0"
+version = "0.1.0"
+description = "CUBE: efficient and noise-robust F0 estimation for speech, singing voice, and instrumental music"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Eray Eren" },
+    { name = "Zilai Wang" },
+    { name = "Natarajan Balaji Shankar" },
+    { name = "Kaiyuan Zhang" },
+    { name = "Mohan Shi" },
+    { name = "Abeer Alwan" },
+]
+keywords = ["pitch estimation", "F0", "fundamental frequency", "speech", "singing voice", "music"]
+dependencies = [
+    "torch>=2.1",
+    "torchaudio>=2.1",
+    "numpy>=1.23",
+    "soundfile>=0.12",
+    "soxr>=0.3",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Science/Research",
+    "Topic :: Multimedia :: Sound/Audio :: Analysis",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: MIT License",
+]
+
+[project.urls]
+Repository = "https://github.com/errayeren/robustf0estimation"
+
+[project.optional-dependencies]
+safetensors = ["safetensors"]
+test = ["pytest>=7"]
+
+[project.scripts]
+cube-f0 = "cube.cli:main"
+
+[tool.setuptools]
+packages = ["cube"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
